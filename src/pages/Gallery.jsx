@@ -5,43 +5,37 @@ export default function Gallery() {
     {
       title: "Spicy Chicken Kebabs",
       category: "Kebab",
-      imageUrl: "./public/kebabs.jpg",
+      imageUrl: "/kebabs.jpg",
       alt: "Spicy Chicken Kebabs on a platter"
     },
     {
       title: "Gourmet Beef Burger",
       category: "Burger",
-      imageUrl: "./public/burger.jpg",
+      imageUrl: "/beefBurger.jpg",
       alt: "Gourmet Beef Burger with fries"
     },
     {
       title: "Fresh Caesar Salad",
       category: "Salad",
-      imageUrl: "./public/salad.jpg",
+      imageUrl: "/salad.jpg",
       alt: "Fresh Caesar Salad in a bowl"
-    },
-    {
-      title: "Signature Dipping Sauces",
-      category: "Sauces",
-      imageUrl: "./public/Sauces.jpg",
-      alt: "Assortment of dipping sauces"
     },
     {
       title: "Tropical Mixed Drink",
       category: "Drinks",
-      imageUrl: "./public/drinks.jpg",
+      imageUrl: "/drinks.jpg",
       alt: "Refreshing tropical cocktail"
     },
     {
       title: "Vegetarian Halloumi Wrap",
       category: "Kebab",
-      imageUrl: "./public/Wrap.jpg",
+      imageUrl: "/wrap.jpg",
       alt: "Vegetarian Halloumi Wrap"
     },
     {
       title: "Charcoal chicken",
       category: "Chicken",
-      imageUrl: "./public/CharcoalChicken.jpg",
+      imageUrl: "/CharcoalChicken.jpg",
       alt: "Charcoal chicken"
     }
   ];
