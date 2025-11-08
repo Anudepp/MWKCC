@@ -522,7 +522,7 @@ export default function Menu() {
 
         {/* **Menu Title: Consistent Bronze Gradient and Font** */}
         <h1 className={`text-6xl font-extralight text-center mb-10 tracking-widest ${BRONZE_GRADIENT}`}>
-          The Full Menu
+       Menu
         </h1>
 
         {/* **Main Menu Container: Subtle Dark Card with Bronze Border** */}
