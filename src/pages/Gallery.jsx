@@ -27,12 +27,6 @@ export default function Gallery() {
       alt: "Refreshing tropical cocktail"
     },
     {
-      title: "Vegetarian Halloumi Wrap",
-      category: "Kebab",
-      imageUrl: "/wrap.jpg",
-      alt: "Vegetarian Halloumi Wrap"
-    },
-    {
       title: "Charcoal chicken",
       category: "Chicken",
       imageUrl: "/CharcoalChicken.jpg",
@@ -46,8 +40,17 @@ export default function Gallery() {
       <div className="container mx-auto py-24 px-6">
         {/* Heading - Clean, elegant font */}
         <div className="text-center mb-16">
-          <h2 className="text-7xl font-serif font-normal text-white tracking-widest mb-4 drop-shadow-lg">
-            The Chef's Collection
+          <h2 className="
+              text-4xl          /* Default (Mobile) Size */
+              sm:text-5xl       /* Small Screen Size */
+              lg:text-7xl       /* Large Screen Size */
+              font-serif font-normal text-white 
+              tracking-normal   /* Default (Mobile) Tracking */
+              sm:tracking-wider /* Small Screen Tracking */
+              lg:tracking-widest /* Large Screen Tracking */
+              mb-4 drop-shadow-lg
+            ">
+            Chef's Collection
           </h2>
           <p className="text-lg text-stone-400 max-w-3xl mx-auto">
             A meticulously curated presentation of our kitchen's finest
