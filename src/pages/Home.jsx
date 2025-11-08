@@ -8,6 +8,43 @@ export default function Home() {
   const bronzeTextGradient =
     "bg-gradient-to-r from-amber-400 via-amber-200 to-amber-600 bg-clip-text text-transparent";
 
+  const TEXT_LIGHT = "text-stone-100";
+  const TEXT_SECONDARY_DARK = "text-stone-400";
+
+  // Gallery items moved from Gallery.jsx
+  const galleryItems = [
+    {
+      title: "Spicy Chicken Kebabs",
+      category: "Kebab",
+      imageUrl: "/kebabs.jpg", // Note: This is also used for the hero, assuming it's a great shot!
+      alt: "Spicy Chicken Kebabs on a platter"
+    },
+    {
+      title: "Gourmet Beef Burger",
+      category: "Burger",
+      imageUrl: "/beefBurger.jpg",
+      alt: "Gourmet Beef Burger with fries"
+    },
+    {
+      title: "Fresh Caesar Salad",
+      category: "Salad",
+      imageUrl: "/salad.jpg",
+      alt: "Fresh Caesar Salad in a bowl"
+    },
+    {
+      title: "Tropical Mixed Drink",
+      category: "Drinks",
+      imageUrl: "/drinks.jpg",
+      alt: "Refreshing tropical cocktail"
+    },
+    {
+      title: "Charcoal chicken",
+      category: "Chicken",
+      imageUrl: "/CharcoalChicken.jpg",
+      alt: "Charcoal chicken"
+    }
+  ];
+
   // **1. Main container is set to deep black background (bg-stone-950)**
   return (
     <div className="bg-stone-950 min-h-screen py-24">
@@ -65,7 +102,7 @@ export default function Home() {
             {/* **Image Container: Subtle dark background and elegant rounded corners** */}
             <div className="w-full h-[400px] md:h-[500px] bg-stone-900 rounded-3xl overflow-hidden shadow-2xl shadow-black/80">
               <img
-                // 🌟 UPDATED PATH: Image from the public folder root
+                // 🌟 Hero Image Path
                 src="/kebabs.jpg"
                 alt="Signature Kebabs & Charcoal Chicken"
                 className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
@@ -83,9 +120,82 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* --- Features Section --- */}
+        {/* ---------------------------------------------------- */}
+        {/* --- Gallery Section (MOVED ABOVE FEATURES) --- */}
         <motion.section
-          className="mt-28 grid md:grid-cols-3 gap-8"
+          className="mt-28" // Separated from Hero with standard margin
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { staggerChildren: 0.1, duration: 0.5 }
+            }
+          }}
+        >
+          {/* Heading - Clean, elegant font */}
+          <div className="text-center mb-16">
+            <h2 className="
+                text-4xl sm:text-5xl lg:text-7xl 
+                font-serif font-light text-white 
+                tracking-widest mb-4 drop-shadow-lg
+              ">
+              Chef's Collection
+            </h2>
+            <p
+              className={`text-lg ${TEXT_SECONDARY_DARK} max-w-3xl mx-auto italic`}
+            >
+              A meticulously curated presentation of our kitchen's finest
+              achievements.
+            </p>
+          </div>
+
+          {/* Image Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {galleryItems.map((item, index) =>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                variants={{ visible: { opacity: 1, scale: 1 } }}
+                transition={{ delay: index * 0.05 }}
+                className="group relative overflow-hidden rounded-xl bg-black transition duration-700 ease-in-out hover:shadow-2xl hover:shadow-amber-900/70 transform hover:-translate-y-1 border border-amber-900/50 aspect-[4/5]" // Added aspect ratio for uniform height
+              >
+                {/* Image with Dark Fade Overlay */}
+                <img
+                  src={item.imageUrl}
+                  alt={item.alt}
+                  className="w-full h-full object-cover transition duration-700 group-hover:scale-[1.05] group-hover:opacity-80"
+                  loading="lazy"
+                  onError={e => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://placehold.co/400x500/1c1917/ffffff?text=Image+Missing";
+                  }}
+                />
+
+                {/* Bronze Overlay for Text */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-4 flex items-end">
+                  <div>
+                    <span className="text-xs font-medium uppercase tracking-widest text-amber-500">
+                      {item.category}
+                    </span>
+                    <h3 className="text-xl font-light text-white mt-1">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </motion.section>
+
+        {/* ---------------------------------------------------- */}
+        {/* --- Features Section (MOVED BELOW GALLERY) --- */}
+        <motion.section
+          className="mt-28 grid md:grid-cols-3 gap-8" // Separated from Gallery with standard margin
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
