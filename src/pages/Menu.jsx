@@ -533,12 +533,12 @@ export default function Menu() {
   );
 
   return (
-    // **Page Background: Deep Black**
-    <div className="bg-stone-950 min-h-screen py-24 px-4">
+    // **Page Background: Deep Black - Padding is now pt-12 (top) and pb-16 (bottom)**
+    <div className="bg-stone-950 min-h-screen pt-12 pb-16 px-4">
       <div className="container mx-auto max-w-6xl">
 
-        {/* **Menu Title: Consistent Bronze Gradient and Font** */}
-        <h1 className={`text-6xl font-extralight text-center mb-10 tracking-widest ${BRONZE_GRADIENT}`}>
+        {/* // Menu Title: Responsive Sizing */}
+        <h1 className={`text-4xl md:text-6xl font-extralight text-center mb-10 tracking-widest ${BRONZE_GRADIENT}`}>
        Menu
         </h1>
 
