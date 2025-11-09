@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 // 1. Full menu data defined here to keep the component self-contained
@@ -319,6 +319,23 @@ const tabs = [
 
 export default function Menu() {
   const [active, setActive] = useState("kebabs");
+  // **MODIFIED:** Using a ref for the entire Tabs container
+  const tabsContainerRef = useRef(null);
+
+  // **MODIFIED:** Handler now scrolls the tabs container to the top of the viewport
+  const handleTabClick = (key) => {
+    setActive(key);
+    
+    // Scroll the entire tabs container to the start of the viewport.
+    // This correctly positions the active tab at the top,
+    // making the new content immediately visible below it.
+    if (tabsContainerRef.current) {
+      tabsContainerRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   // Reusable styles for the premium theme
   const BRONZE_ACCENT = "text-amber-500";
@@ -528,12 +545,15 @@ export default function Menu() {
         {/* **Main Menu Container: Subtle Dark Card with Bronze Border** */}
         <div className={`bg-black/60 rounded-3xl shadow-2xl shadow-black/80 overflow-hidden border border-amber-700/30`}>
           
-          {/* Tabs Navigation */}
-          <div className="flex flex-wrap md:flex-nowrap bg-stone-900 border-b border-amber-700/50">
+          {/* Tabs Navigation - REF ATTACHED HERE */}
+          <div 
+            ref={tabsContainerRef}
+            className="flex flex-wrap md:flex-nowrap bg-stone-900 border-b border-amber-700/50"
+          >
             {tabs.map(t =>
               <button
                 key={t.key}
-                onClick={() => setActive(t.key)}
+                onClick={() => handleTabClick(t.key)}
                 className={`
                   px-4 py-4 md:flex-1 text-sm font-semibold tracking-wide uppercase transition-all duration-300 
                   ${active === t.key
