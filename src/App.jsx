@@ -5,11 +5,13 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
+      <ScrollToTop />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
